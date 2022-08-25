@@ -36,5 +36,5 @@ make help
 ⚡ watch                          Watcher assets for development mode
 ```
 
-### Docker images
+### References
 - https://github.com/pnlinh/docker-php
