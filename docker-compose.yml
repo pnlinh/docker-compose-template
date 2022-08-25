@@ -10,7 +10,7 @@ services:
         extra_hosts:
             - host.docker.internal:host-gateway
         ports:
-            - ${DOCKER_APP_PORT}:80
+            - ${DOCKER_APP_PORT:-80}:80
         volumes:
             - ./:/var/www/html
         depends_on:
@@ -23,12 +23,14 @@ services:
         container_name: laravel-mysql
         command: --default-authentication-plugin=mysql_native_password
         environment:
-            MYSQL_ROOT_PASSWORD: secret
-            MYSQL_PASSWORD: secret
-            MYSQL_USER: user
-            MYSQL_DATABASE: laravel
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_USER: "${DB_USERNAME}"
+            MYSQL_DATABASE: "${DB_DATABASE}"
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
         ports:
-            - "${DOCKER_DB_PORT}:3306"
+            - "${DOCKER_DB_PORT:-3306}:3306"
         volumes:
             - mysql-data:/var/lib/mysql
             - ./docker/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
@@ -40,7 +42,7 @@ services:
     redis:
         image: redis:alpine
         ports:
-            - "${DOCKER_REDIS_PORT}:6379"
+            - "${DOCKER_REDIS_PORT:-6379}:6379"
         container_name: laravel-redis
         volumes:
             - redis-data:/data
@@ -52,7 +54,7 @@ services:
     mailhog:
         image: mailhog/mailhog
         ports:
-            - "${DOCKER_MAIL_PORT}:8025"
+            - "${DOCKER_MAIL_PORT:-8025}:8025"
         container_name: laravel-mailhog
 
     static:
