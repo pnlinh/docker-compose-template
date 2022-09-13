@@ -8,6 +8,9 @@ all: build run
 build: ## Build Docker image for local development
 	docker-compose build --no-cache
 
+install: ## Install dependencies libs
+	docker-compose exec --user www app sh -c "composer install"
+
 start: run
 run: ## Run application in Docker. Run 'make build' first
 	docker-compose up -d
