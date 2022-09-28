@@ -3,10 +3,10 @@ version: "3.4"
 services:
     app:
         image: pnlinh/php:81
-        hostname: "${DOCKER_CONTAINER_NAME}-app"
-        container_name: "${DOCKER_CONTAINER_NAME}-app"
+        hostname: "${DOCKER_PREFIX_NAME}-app"
+        container_name: "${DOCKER_PREFIX_NAME}-app"
         environment:
-            PHP_IDE_CONFIG: serverName="${DOCKER_CONTAINER_NAME}-app.docker.cli"
+            PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
         extra_hosts:
             - host.docker.internal:host-gateway
         ports:
@@ -18,7 +18,7 @@ services:
 
     mysql:
         image: mysql:8.0
-        container_name: "${DOCKER_CONTAINER_NAME}-mysql"
+        container_name: "${DOCKER_PREFIX_NAME}-mysql"
         command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
@@ -41,7 +41,7 @@ services:
 
     pgsql:
         image: postgres:14
-        container_name: "${DOCKER_CONTAINER_NAME}-pgsql"
+        container_name: "${DOCKER_PREFIX_NAME}-pgsql"
         environment:
             PGPASSWORD: "${DB_PASSWORD:-secret}"
             POSTGRES_DB: "${DB_DATABASE}"
@@ -61,7 +61,7 @@ services:
 
     mongodb:
         image: mongo
-        container_name: "${DOCKER_CONTAINER_NAME}-mongodb"
+        container_name: "${DOCKER_PREFIX_NAME}-mongodb"
         ports:
             - "${DOCKER_MONGODB_PORT:-27017}:27017"
         environment:
@@ -81,7 +81,7 @@ services:
 
     redis:
         image: redis:alpine
-        container_name: "${DOCKER_CONTAINER_NAME}-redis"
+        container_name: "${DOCKER_PREFIX_NAME}-redis"
         ports:
             - "${DOCKER_REDIS_PORT:-6379}:6379"
         volumes:
@@ -95,7 +95,7 @@ services:
 
     mailhog:
         image: mailhog/mailhog
-        container_name: "${DOCKER_CONTAINER_NAME}-mailhog"
+        container_name: "${DOCKER_PREFIX_NAME}-mailhog"
         ports:
             - "${DOCKER_MAIL_PORT:-8025}:8025"
         healthcheck:
