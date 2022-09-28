@@ -1,32 +1,32 @@
 version: '3.4'
 
 services:
-  app:
-    extends:
-      file: docker/docker-compose.base.yml
-      service: app
+    app:
+        extends:
+            file: docker/docker-compose.base.yml
+            service: app
 
-  mysql:
-    extends:
-      file: docker/docker-compose.base.yml
-      service: mysql
+    mysql:
+        extends:
+            file: docker/docker-compose.base.yml
+            service: mysql
 
-  redis:
-    extends:
-      file: docker/docker-compose.base.yml
-      service: redis
+    redis:
+        extends:
+            file: docker/docker-compose.base.yml
+            service: redis
 
-  mailhog:
-    extends:
-      file: docker/docker-compose.base.yml
-      service: mailhog
+    mailhog:
+        extends:
+            file: docker/docker-compose.base.yml
+            service: mailhog
 
 volumes:
-  mysql-data:
-    driver: local
-  redis-data:
-    driver: local
+    mysql-data:
+        driver: local
+    redis-data:
+        driver: local
 
 networks:
-  localnet:
-    driver: "bridge"
+    localnet:
+        driver: "bridge"
