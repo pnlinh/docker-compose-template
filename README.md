@@ -1,10 +1,24 @@
 # Docker for Laravel development
 
-### How to install
+### How to use
 
-- Install [Makefile](https://makefiletutorial.com/) on your OS (recommend)
-- Prepare project struct below:
-  ![project struct](https://user-images.githubusercontent.com/26193890/186565110-93532d9f-1ccf-4500-82fc-551e86171974.png)
+- Install [Makefile](https://makefiletutorial.com/) on your OS
+- Project struct:
+  ```
+  ├── app
+  ├── bootstrap
+  ├── config
+  ├── database
+  ├── docker
+  │    └── docker-composer.base.yml
+       └── ...        
+  ├── public
+  ├── ...
+  └── docker-compose.yml
+  └── Makefile
+  └── composer.json
+  └── composer.lock
+  ```
 
 - Build and up project
 
