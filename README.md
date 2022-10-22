@@ -10,7 +10,7 @@
   ├── config
   ├── database
   ├── docker
-  │    └── docker-composer.base.yml
+  │    └── docker-compose.base.yml
        └── ...        
   ├── public
   ├── ...
