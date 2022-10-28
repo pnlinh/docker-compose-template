@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
     app:
-        image: pnlinh/php:81
+        image: pnlinh/laravel:php8.1
         hostname: "${DOCKER_PREFIX_NAME}-app"
         container_name: "${DOCKER_PREFIX_NAME}-app"
         environment:
