@@ -48,7 +48,7 @@ services:
             POSTGRES_USER: "${DB_USERNAME}"
             POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
         ports:
-            - "${FORWARD_DB_PORT:-5432}:5432"
+            - "${DOCKER_DB_PORT:-5432}:5432"
         volumes:
             - pgsql-data:/var/lib/postgresql/data
             - ../docker/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql
