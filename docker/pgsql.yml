@@ -1,0 +1,19 @@
+pgsql:
+    image: postgres:14
+    container_name: "${DOCKER_PREFIX_NAME}-pgsql"
+    environment:
+        PGPASSWORD: "${DB_PASSWORD:-secret}"
+        POSTGRES_DB: "${DB_DATABASE}"
+        POSTGRES_USER: "${DB_USERNAME}"
+        POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
+    ports:
+        - "${DOCKER_DB_PORT:-5432}:5432"
+    volumes:
+        - pgsql-data:/var/lib/postgresql/data
+        - ../docker/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql
+    healthcheck:
+        test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
+        retries: 3
+        timeout: 5s
+    networks:
+        - localnet

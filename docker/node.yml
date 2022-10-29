@@ -1,0 +1,9 @@
+static-builder:
+    build:
+        context: .
+        dockerfile: docker/node.Dockerfile
+    image: pnlinh/static-builder
+    container_name: static-builder
+    volumes:
+        - ./../:/var/www/html
+    working_dir: /var/www/html

@@ -5,7 +5,7 @@ help:
 
 all: build run install
 
-build: ## Build Docker image for local development
+build: ## Build Docker image
 	docker-compose build --no-cache
 
 install: ## Install dependencies libs
@@ -43,6 +43,12 @@ status:
 
 logs: ## Show 'app' container logs
 	docker-compose logs -f app
+
+redis-cli: ## Connect redis cli
+	docker-compose exec redis redis-cli
+
+mysql-cli: ## Connect mysql cli
+	docker-compose exec mysql bash
 
 static: ### Bundle assets for development mode
 	docker run -it --rm -v "${PWD}:/build" pnlinh/static-builder npm run dev

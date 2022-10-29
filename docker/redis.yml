@@ -1,0 +1,13 @@
+redis:
+    image: redis:alpine
+    container_name: "${DOCKER_PREFIX_NAME}-redis"
+    ports:
+        - "${DOCKER_REDIS_PORT:-6379}:6379"
+    volumes:
+        - redis-data:/data
+    healthcheck:
+        test: [ "CMD", "redis-cli", "ping" ]
+        retries: 3
+        timeout: 5s
+    networks:
+        - localnet
