@@ -21,7 +21,7 @@
   ```
   *Laravel project struct*
 
-```
+  ```
   ├── assets
   ├── bin
   ├── config
@@ -37,7 +37,9 @@
   └── composer.json
   └── composer.lock
   ```
-*Symfony project struct*
+
+  *Symfony project struct*
+
 
 - Prepare environment config (`.env` file):
     - Symfony:
