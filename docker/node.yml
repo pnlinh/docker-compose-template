@@ -5,4 +5,4 @@ static-builder:
     image: pnlinh/static-builder
     container_name: static-builder
     volumes:
-        - ./:/build
+        - ./:/app
