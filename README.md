@@ -80,7 +80,7 @@ make run
 make install-composer
 ```
 
-- View all makefile commands:
+- See more commands:
 
 ```shell
 make help
