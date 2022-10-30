@@ -5,5 +5,4 @@ static-builder:
     image: pnlinh/static-builder
     container_name: static-builder
     volumes:
-        - ./../:/var/www/html
-    working_dir: /var/www/html
+        - ./:/build
