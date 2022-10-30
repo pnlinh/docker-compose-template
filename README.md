@@ -1,9 +1,9 @@
-# Docker for Laravel development
+# Docker compose template for PHP development
 
 ### How to use
 
 - Install [Makefile](https://makefiletutorial.com/) on your OS
-- Project struct:
+- Project struct with Laravel:
   ```
   ├── app
   ├── bootstrap
@@ -25,6 +25,7 @@
 ```
 cp .env.docker .env
 make all
+make install-composer
 ```
 
 Try url http://localhost
@@ -36,18 +37,21 @@ make help
 ```
 
 ```shell
-⚡ build                          Build Docker image for local development
+⚡ build                          Build docker image for local development
 ⚡ destroy                        Alias docker-compose down command
-⚡ ip                             Get IP address of docker container
-⚡ logs                           Show 'app' container logs
+⚡ install-composer               Composer install dependencies
+⚡ logs                           Show service container logs
+⚡ mysql-cli                      Connect mysql cli
+⚡ npm-build                      Bundle assets for production
+⚡ npm-dev                        Bundle assets for development
+⚡ npm-watch                      Watcher assets for development
 ⚡ ps                             View services status
-⚡ restart                        Restart containers
+⚡ redis-cli                      Connect redis cli
+⚡ restart                        Restart service containers
 ⚡ root                           Enter bash in running Docker container as root user
 ⚡ run                            Run application in Docker. Run 'make build' first
 ⚡ shell                          Enter bash in running Docker container
-⚡ static                         Bundle assets for development mode
-⚡ stop                           Stop application running in Docker
-⚡ watch                          Watcher assets for development mode
+⚡ stop                           Force stop service containers
 ```
 
 ### References
