@@ -1,5 +1,5 @@
 app:
-    image: pnlinh/laravel:php8.1
+    image: pnlinh/magento:${PHP_VERSION:-php7.4}
     hostname: "${DOCKER_PREFIX_NAME}-app"
     container_name: "${DOCKER_PREFIX_NAME}-app"
     environment:

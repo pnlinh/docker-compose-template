@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
     app:
-        image: pnlinh/laravel:php8.1
+        image: pnlinh/laravel:${PHP_VERSION:-php8.1}
         hostname: "${DOCKER_PREFIX_NAME}-app"
         container_name: "${DOCKER_PREFIX_NAME}-app"
         environment:
@@ -69,8 +69,8 @@ services:
         build:
             context: .
             dockerfile: docker/node.Dockerfile
-        image: pnlinh/static-builder
-        container_name: static-builder
+        image: pnlinh/laravel-mix
+        container_name: laravel-mix
         volumes:
             - ./:/app
 

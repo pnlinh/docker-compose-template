@@ -1,0 +1,14 @@
+app:
+    image: pnlinh/laravel:${PHP_VERSION:-php8.1}
+    hostname: "${DOCKER_PREFIX_NAME}-app"
+    container_name: "${DOCKER_PREFIX_NAME}-app"
+    environment:
+        PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
+    extra_hosts:
+        - host.docker.internal:host-gateway
+    ports:
+        - "${DOCKER_APP_PORT:-80}:80"
+    volumes:
+        - ./:/var/www/html
+    networks:
+        - localnet

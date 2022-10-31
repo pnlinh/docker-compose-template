@@ -50,8 +50,11 @@ psql-cli: ## Connect postgresql cli
 npm-dev: ### Bundle assets for development
 	docker-compose run --rm static-builder npm run dev
 
-npm-build: ### Bundle assets for production
+npm-build: ### Bundle assets for production within Symfony
 	docker-compose run --rm static-builder npm run build
+
+npm-prod: ### Bundle assets for production within Laravel
+	docker-compose run --rm static-builder npm run prod
 
 npm-watch: ### Watcher assets for development
 	docker-compose run --rm static-builder npm run watch

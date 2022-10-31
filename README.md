@@ -54,6 +54,7 @@
       DOCKER_REDIS_PORT=7379
       DOCKER_MAIL_PORT=8026
       DOCKER_PREFIX_NAME=symfony
+      PHP_VERSION=php8.1
       ```
     - Laravel:
       ```
@@ -69,6 +70,7 @@
       DOCKER_REDIS_PORT=6379
       DOCKER_MAIL_PORT=8025
       DOCKER_PREFIX_NAME=laravel
+      PHP_VERSION=php8.1
       ```
 
 - Build and up project
@@ -80,22 +82,33 @@ make run
 make install-composer
 ```
 
+- To bundle assets
+
+```
+make npm-dev
+make npm-watch
+make npm-build #For Symfony
+make npm-prod #For Laravel
+```
+
 - See more commands:
 
 ```shell
 make help
 ```
 
-```shell
-⚡ build                          Build docker image for local development
+```
+⚡ build                          Build docker image
 ⚡ destroy                        Alias docker-compose down command
 ⚡ install-composer               Composer install dependencies
 ⚡ logs                           Show service container logs
 ⚡ mysql-cli                      Connect mysql cli
-⚡ npm-build                      Bundle assets for production
+⚡ npm-build                      Bundle assets for production within Symfony
 ⚡ npm-dev                        Bundle assets for development
+⚡ npm-prod                       Bundle assets for production within Laravel
 ⚡ npm-watch                      Watcher assets for development
 ⚡ ps                             View services status
+⚡ psql-cli                       Connect postgresql cli
 ⚡ redis-cli                      Connect redis cli
 ⚡ restart                        Restart service containers
 ⚡ root                           Enter bash in running Docker container as root user
