@@ -9,11 +9,5 @@ mongodb:
         MONGO_INITDB_ROOT_PASSWORD: "${MONGO_DB_PASSWORD:-secret}"
     volumes:
         - mongodb-data:/data/db
-    #    healthcheck:
-    #      test: echo 'db.runCommand("ping").ok' | mongo mongodb:27017/"${MONGO_DB_DATABASE}" --quiet
-    #      interval: 10s
-    #      retries: 3
-    #      timeout: 5s
-    #      start_period: 40s
     networks:
         - localnet
