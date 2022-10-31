@@ -44,6 +44,9 @@ redis-cli: ## Connect redis cli
 mysql-cli: ## Connect mysql cli
 	docker-compose exec mysql bash
 
+psql-cli: ## Connect postgresql cli
+	docker-compose exec pgsql bash
+
 npm-dev: ### Bundle assets for development
 	docker-compose run --rm static-builder npm run dev
 
