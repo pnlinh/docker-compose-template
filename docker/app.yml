@@ -9,6 +9,6 @@ app:
     ports:
         - "${DOCKER_APP_PORT:-80}:80"
     volumes:
-        - ./../:/var/www/html
+        - ./:/var/www/html
     networks:
         - localnet
