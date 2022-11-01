@@ -103,6 +103,7 @@ make help
 ⚡ mysql-cli                      Connect mysql cli
 ⚡ npm-build                      Bundle assets for production within Symfony
 ⚡ npm-dev                        Bundle assets for development
+⚡ npm-install-force              Install node packages with force option
 ⚡ npm-prod                       Bundle assets for production within Laravel
 ⚡ npm-watch                      Watcher assets for development
 ⚡ ps                             View services status
