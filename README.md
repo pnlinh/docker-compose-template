@@ -44,13 +44,12 @@
 - Prepare environment config (`.env` file):
     - Symfony:
       ```
-      DB_PORT=5432
-      DB_DATABASE=symfony-blog
-      DB_USERNAME=user
-      DB_PASSWORD=secret
+      POSTGRES_DB=symfony-blog
+      POSTGRES_USER=user
+      POSTGRES_PASSWORD=secret
 
       DOCKER_APP_PORT=80
-      DOCKER_DB_PORT=4306
+      DOCKER_POSTGRES_PORT=5432
       DOCKER_REDIS_PORT=7379
       DOCKER_MAIL_PORT=8026
       DOCKER_PREFIX_NAME=symfony
@@ -66,7 +65,7 @@
       DB_PASSWORD=secret
 
       DOCKER_APP_PORT=80
-      DOCKER_DB_PORT=3306
+      DOCKER_MYSQL_PORT=3306
       DOCKER_REDIS_PORT=6379
       DOCKER_MAIL_PORT=8025
       DOCKER_PREFIX_NAME=laravel

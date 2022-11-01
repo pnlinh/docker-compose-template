@@ -10,10 +10,13 @@ mysql:
         MYSQL_DATABASE: "${DB_DATABASE}"
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
     ports:
-        - "${DOCKER_DB_PORT:-3306}:3306"
+        - "${DOCKER_MYSQL_PORT:-3306}:3306"
     volumes:
         - mysql-data:/var/lib/mysql
         - ./docker/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
+        - ./docker/database/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+#        - ./docker/database/mysql/data:/var/lib/mysql
+#        - ./docker/database/mysql/logs:/var/log/mysql
     healthcheck:
         test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
         retries: 3
