@@ -47,6 +47,9 @@ mysql-cli: ## Connect mysql cli
 psql-cli: ## Connect postgresql cli
 	docker-compose exec pgsql bash
 
+npm-install-force: ### Install node packages with force option
+	docker-compose run --rm static-builder npm install --force
+
 npm-dev: ### Bundle assets for development
 	docker-compose run --rm static-builder npm run dev
 
