@@ -1,5 +1,5 @@
 app:
-    image: pnlinh/magento:${PHP_VERSION:-php7.4}
+    image: pnlinh/magento:php${PHP_VERSION:-7.4}
     hostname: "${DOCKER_PREFIX_NAME}-app"
     container_name: "${DOCKER_PREFIX_NAME}-app"
     environment:

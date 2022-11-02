@@ -53,7 +53,7 @@
       DOCKER_REDIS_PORT=7379
       DOCKER_MAIL_PORT=8026
       DOCKER_PREFIX_NAME=symfony
-      PHP_VERSION=php8.1
+      PHP_VERSION=8.1
       ```
     - Laravel:
       ```
@@ -69,7 +69,7 @@
       DOCKER_REDIS_PORT=6379
       DOCKER_MAIL_PORT=8025
       DOCKER_PREFIX_NAME=laravel
-      PHP_VERSION=php8.1
+      PHP_VERSION=8.1
       ```
 
 - Build and up project

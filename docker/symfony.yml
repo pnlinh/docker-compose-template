@@ -1,5 +1,5 @@
 app:
-    image: pnlinh/symfony:${PHP_VERSION:-php8.1}
+    image: pnlinh/symfony:php${PHP_VERSION:-8.1}
     hostname: "${DOCKER_PREFIX_NAME}-app"
     container_name: "${DOCKER_PREFIX_NAME}-app"
     environment:
