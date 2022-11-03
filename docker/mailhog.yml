@@ -1,4 +1,4 @@
-mailhog:
+mail:
     image: mailhog/mailhog
     container_name: "${DOCKER_PREFIX_NAME}-mailhog"
     ports:

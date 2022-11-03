@@ -64,6 +64,13 @@
       DB_USERNAME=user
       DB_PASSWORD=secret
 
+      MAIL_DRIVER=smtp
+      MAIL_HOST=mail
+      MAIL_PORT=1025
+      MAIL_USERNAME=null
+      MAIL_PASSWORD=null
+      MAIL_ENCRYPTION=null
+      
       DOCKER_APP_PORT=80
       DOCKER_MYSQL_PORT=3306
       DOCKER_REDIS_PORT=6379

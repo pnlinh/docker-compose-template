@@ -16,7 +16,7 @@ services:
             file: docker/docker-compose.base.yml
             service: redis
 
-    mailhog:
+    mail:
         extends:
             file: docker/docker-compose.base.yml
             service: mailhog
