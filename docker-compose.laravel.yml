@@ -58,10 +58,6 @@ services:
         container_name: "${DOCKER_PREFIX_NAME}-mailhog"
         ports:
             - "${DOCKER_MAIL_PORT:-8025}:8025"
-        healthcheck:
-            test: [ "CMD", "echo | telnet 127.0.0.1 8025" ]
-            retries: 3
-            timeout: 5s
         networks:
             - localnet
 
