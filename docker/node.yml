@@ -1,8 +1,8 @@
 static-builder:
-    build:
-        context: .
-        dockerfile: docker/node.Dockerfile
-    image: pnlinh/static-builder
-    container_name: static-builder
-    volumes:
-        - ./:/app
+  build:
+    context: .
+    dockerfile: docker/node.Dockerfile
+  image: pnlinh/static-builder
+  container_name: static-builder
+  volumes:
+    - ./:/app

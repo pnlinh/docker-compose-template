@@ -1,13 +1,13 @@
 mongodb:
-    image: mongo
-    container_name: "${DOCKER_PREFIX_NAME}-mongodb"
-    ports:
-        - "${DOCKER_MONGODB_PORT:-27017}:27017"
-    environment:
-        MONGO_INITDB_DATABASE: "${MONGO_DB_DATABASE:-laravel}"
-        MONGO_INITDB_ROOT_USERNAME: "${MONGO_DB_USERNAME:-user}"
-        MONGO_INITDB_ROOT_PASSWORD: "${MONGO_DB_PASSWORD:-secret}"
-    volumes:
-        - mongodb-data:/data/db
-    networks:
-        - localnet
+  image: mongo
+  container_name: "${DOCKER_PREFIX_NAME}-mongodb"
+  ports:
+    - "${DOCKER_MONGODB_PORT:-27017}:27017"
+  environment:
+    MONGO_INITDB_DATABASE: "${MONGO_DB_DATABASE:-laravel}"
+    MONGO_INITDB_ROOT_USERNAME: "${MONGO_DB_USERNAME:-user}"
+    MONGO_INITDB_ROOT_PASSWORD: "${MONGO_DB_PASSWORD:-secret}"
+  volumes:
+    - mongodb-data:/data/db
+  networks:
+    - local-net

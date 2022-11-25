@@ -1,81 +1,81 @@
 version: '3.4'
 
 services:
-    app:
-        image: pnlinh/laravel:php${PHP_VERSION:-8.1}
-        hostname: "${DOCKER_PREFIX_NAME}-app"
-        container_name: "${DOCKER_PREFIX_NAME}-app"
-        environment:
-            PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
-        extra_hosts:
-            - host.docker.internal:host-gateway
-        ports:
-            - "${DOCKER_APP_PORT:-80}:80"
-        volumes:
-            - ./:/var/www/html
-        networks:
-            - localnet
+  app:
+    image: pnlinh/laravel:php${PHP_VERSION:-8.1}
+    hostname: "${DOCKER_PREFIX_NAME}-app"
+    container_name: "${DOCKER_PREFIX_NAME}-app"
+    environment:
+      PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "${DOCKER_APP_PORT:-80}:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - local-net
 
-    mysql:
-        image: mysql:8.0
-        container_name: "${DOCKER_PREFIX_NAME}-mysql"
-        command: --default-authentication-plugin=mysql_native_password
-        environment:
-            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-            MYSQL_ROOT_HOST: "%"
-            MYSQL_PASSWORD: "${DB_PASSWORD}"
-            MYSQL_USER: "${DB_USERNAME}"
-            MYSQL_DATABASE: "${DB_DATABASE}"
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        ports:
-            - "${DOCKER_MYSQL_PORT:-3306}:3306"
-        volumes:
-            - mysql-data:/var/lib/mysql
-            - ./docker/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
-        healthcheck:
-            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
-            retries: 3
-            timeout: 5s
-        networks:
-            - localnet
+  mysql:
+    image: mysql:8.0
+    container_name: "${DOCKER_PREFIX_NAME}-mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      - "${DOCKER_MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+      retries: 3
+      timeout: 5s
+    networks:
+      - local-net
 
-    redis:
-        image: redis:alpine
-        container_name: "${DOCKER_PREFIX_NAME}-redis"
-        ports:
-            - "${DOCKER_REDIS_PORT:-6379}:6379"
-        volumes:
-            - redis-data:/data
-        healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
-            retries: 3
-            timeout: 5s
-        networks:
-            - localnet
+  redis:
+    image: redis:alpine
+    container_name: "${DOCKER_PREFIX_NAME}-redis"
+    ports:
+      - "${DOCKER_REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      retries: 3
+      timeout: 5s
+    networks:
+      - local-net
 
-    mail:
-        image: mailhog/mailhog
-        container_name: "${DOCKER_PREFIX_NAME}-mailhog"
-        ports:
-            - "${DOCKER_MAIL_PORT:-8025}:8025"
-        networks:
-            - localnet
+  mail:
+    image: mailhog/mailhog
+    container_name: "${DOCKER_PREFIX_NAME}-mailhog"
+    ports:
+      - "${DOCKER_MAIL_PORT:-8025}:8025"
+    networks:
+      - local-net
 
-    static-builder:
-        build:
-            context: .
-            dockerfile: docker/node.Dockerfile
-        image: pnlinh/laravel-mix
-        container_name: laravel-mix
-        volumes:
-            - ./:/app
+  static-builder:
+    build:
+      context: .
+      dockerfile: docker/node.Dockerfile
+    image: pnlinh/laravel-mix
+    container_name: laravel-mix
+    volumes:
+      - ./:/app
 
 volumes:
-    mysql-data:
-        driver: local
-    redis-data:
-        driver: local
+  mysql-data:
+    driver: local
+  redis-data:
+    driver: local
 
 networks:
-    localnet:
-        driver: "bridge"
+  local-net:
+    driver: "bridge"

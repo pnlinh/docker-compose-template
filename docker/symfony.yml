@@ -1,15 +1,15 @@
 app:
-    image: pnlinh/symfony:php${PHP_VERSION:-8.1}
-    hostname: "${DOCKER_PREFIX_NAME}-app"
-    container_name: "${DOCKER_PREFIX_NAME}-app"
-    environment:
-        PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
-        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgsql:5432/${POSTGRES_DB}?serverVersion=${POSTGRES_VERSION:-14}&charset=utf8
-    extra_hosts:
-        - host.docker.internal:host-gateway
-    ports:
-        - "${DOCKER_APP_PORT:-80}:80"
-    volumes:
-        - ./:/var/www/html
-    networks:
-        - localnet
+  image: pnlinh/symfony:php${PHP_VERSION:-8.1}
+  hostname: "${DOCKER_PREFIX_NAME}-app"
+  container_name: "${DOCKER_PREFIX_NAME}-app"
+  environment:
+    PHP_IDE_CONFIG: serverName="${DOCKER_PREFIX_NAME}-app.docker.cli"
+    DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgsql:5432/${POSTGRES_DB}?serverVersion=${POSTGRES_VERSION:-14}&charset=utf8
+  extra_hosts:
+    - host.docker.internal:host-gateway
+  ports:
+    - "${DOCKER_APP_PORT:-80}:80"
+  volumes:
+    - ./:/var/www/html
+  networks:
+    - local-net
