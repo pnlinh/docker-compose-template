@@ -1,0 +1,7 @@
+mail:
+  image: jcalonso/mailhog
+  container_name: "${DOCKER_PREFIX_NAME}-mailhog"
+  ports:
+    - "${DOCKER_MAIL_PORT:-8025}:8025"
+  networks:
+    - local-net
