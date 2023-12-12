@@ -9,7 +9,7 @@ all: build run
 build: ## Build docker image
 	$(DOCKER_COMPOSE) build --no-cache
 
-install-composer: ## Composer install dependencies
+composer-install: ## Composer install dependencies
 	$(DOCKER_COMPOSE) exec --user www app sh -c "composer install"
 
 start: run

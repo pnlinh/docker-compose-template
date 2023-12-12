@@ -11,4 +11,4 @@ app:
   volumes:
     - ./:/var/www/html
   networks:
-    - local-net
+    - localnet

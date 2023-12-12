@@ -16,4 +16,4 @@ pgsql:
     retries: 3
     timeout: 5s
   networks:
-    - local-net
+    - localnet

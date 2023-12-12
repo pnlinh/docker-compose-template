@@ -84,7 +84,13 @@
 ```
 make build
 make run
-make install-composer
+make composer-install
+```
+
+- To execute container
+
+```shell
+make shell
 ```
 
 - To bundle assets
@@ -105,7 +111,7 @@ make help
 ```
 ⚡ build                          Build docker image
 ⚡ destroy                        Alias docker-compose down command
-⚡ install-composer               Composer install dependencies
+⚡ composer-install               Composer install dependencies
 ⚡ logs                           Show service container logs
 ⚡ mysql-cli                      Connect mysql cli
 ⚡ npm-build                      Bundle assets for production within Symfony

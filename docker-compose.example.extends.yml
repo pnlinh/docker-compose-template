@@ -28,5 +28,5 @@ volumes:
     driver: local
 
 networks:
-  local-net:
+  localnet:
     driver: "bridge"

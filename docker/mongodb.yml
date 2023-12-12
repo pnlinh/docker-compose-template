@@ -10,4 +10,4 @@ mongodb:
   volumes:
     - mongodb-data:/data/db
   networks:
-    - local-net
+    - localnet

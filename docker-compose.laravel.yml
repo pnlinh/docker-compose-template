@@ -14,7 +14,7 @@ services:
     volumes:
       - ./:/var/www/html
     networks:
-      - local-net
+      - localnet
 
   mysql:
     image: mysql:8.0
@@ -37,7 +37,7 @@ services:
       retries: 3
       timeout: 5s
     networks:
-      - local-net
+      - localnet
 
   redis:
     image: redis:alpine
@@ -51,16 +51,16 @@ services:
       retries: 3
       timeout: 5s
     networks:
-      - local-net
+      - localnet
 
   mail:
-    image: mailhog/mailhog
-    container_name: "${DOCKER_PREFIX_NAME}-mailhog"
+    image: axllent/mailpit
+    container_name: "${DOCKER_PREFIX_NAME}-mailpit"
     ports:
       - "${DOCKER_MAIL_PORT:-8025}:8025"
     networks:
-      - local-net
-
+      - localnet
+  
   static-builder:
     build:
       context: .
@@ -77,5 +77,5 @@ volumes:
     driver: local
 
 networks:
-  local-net:
+  localnet:
     driver: "bridge"
