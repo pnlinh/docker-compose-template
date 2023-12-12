@@ -93,6 +93,15 @@ make composer-install
 make shell
 ```
 
+- To fetch the logs of a container
+
+```shell
+make logs # View logs of app container, it is default
+SERVICE=mysql make logs # View logs of mysql container
+SERVICE=redis make logs # View logs of redis container
+SERVICE=mail make logs # View logs of mail container
+```
+
 - To bundle assets
 
 ```
