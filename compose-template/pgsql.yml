@@ -9,10 +9,10 @@ pgsql:
     - "${DOCKER_POSTGRES_PORT:-5432}:5432"
   volumes:
     - pgsql-data:/var/lib/postgresql/data
-#    - ./docker/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql
-#    - ./docker/database/pgsql/data:/var/lib/postgresql/data
+  #    - ./docker/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql
+  #    - ./docker/database/pgsql/data:/var/lib/postgresql/data
   healthcheck:
-    test: [ "CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_PASSWORD}" ]
+    test: ["CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_PASSWORD}"]
     retries: 3
     timeout: 5s
   networks:
